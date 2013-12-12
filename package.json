@@ -1,0 +1,32 @@
+{
+  "name": "yearbook",
+  "version": "0.0.1",
+  "description": "yearbook ========",
+  "main": "index.js",
+  "dependencies": {
+    "async": "~0.2.9",
+    "async-mini": "~0.2.0",
+    "express": "~3.4.7",
+    "hiredis": "~0.1.15",
+    "mongoose": "~3.8.1",
+    "redis": "~0.9.1"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shawnvan/yearbook.git"
+  },
+  "author": "shawnvan",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/shawnvan/yearbook/issues"
+  },
+  "keywords": [
+    "vote"
+  ]
+}
