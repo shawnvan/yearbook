@@ -1,4 +1,5 @@
 BillboardHelper = require '../helpers/BillboardHelper'
+CandidateHelper = require '../helpers/CandidateHelper'
 errMsg = 
 	code : 1
 	msg : 'error'
@@ -13,11 +14,18 @@ listByType = (req,res)->
 	billboardHelper = new BillboardHelper
 	billboardHelper.getBillboardByType req.params.boardType,(boardData)->
 		ret = []
-		console.log boardData
 		for value,index in boardData by 2
-			console.log value,boardData[index+1]
 			ret.push value
 		okMsg['data'] = ret
 		return res.send okMsg
 
+listCandidateByType = (req,res)->
+	return res.send errMsg unless req.params.boardType?
+	candidateHelper = new CandidateHelper
+	data = []
+	candidateHelper.getCandidates req.params.boardType,(candiates)->
+		okMsg['data'] = candiates
+		res.send okMsg
+
 module.exports.listByType = listByType
+module.exports.listCandidateByType = listCandidateByType

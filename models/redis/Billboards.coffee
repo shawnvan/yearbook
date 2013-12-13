@@ -1,34 +1,32 @@
 redisConnection = require '../../redisConnection'
 class Billboards
-	key = null
-	redisClient = null
 	constructor:()->
-		redisClient = redisConnection.getConnections().get()['vote']
+		@redisClient = redisConnection.getConnections().get()['vote']
 
 	__setKeys:(boardType)->
-		key = "board:#{boardType}:zset" if boardType?
+		@key = "board:#{boardType}:zset" if boardType?
 
 
 	getBoards:(boardType,cb)->
 		@__setKeys boardType
 		args = [
-			key
+			@key
 			0
 			-1
 			'WITHSCORES'
 		]
-		redisClient.zrevrange args,(err,reply)->
+		@redisClient.zrevrange args,(err,reply)->
 			return cb [] if err?
 			return cb reply
 
 	voteForSinger:(singerId,boardType,cb)->
 		@__setKeys boardType
 		args = [
-			key
+			@key
 			singerId
 			1
 		]
-		redisClient.zincrby args,(err,reply)->
+		@redisClient.zincrby args,(err,reply)->
 			return cb null if err?
 			return cb reply
 

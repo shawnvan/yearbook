@@ -3,4 +3,5 @@ module.exports = (app)->
 	app.get '/',(req,res)->
 		res.send 'index'
 	app.get '/billboard/:boardType',billboardController.listByType
+	app.get '/candidates/:boardType',billboardController.listCandidateByType
 
