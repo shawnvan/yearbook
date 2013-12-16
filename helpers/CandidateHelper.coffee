@@ -19,9 +19,13 @@ class CandidateHelper
 							hasData = true
 						do cb
 				async.each singerIds,_f,(err)->
-					return cb null if err?
+					return cb -1 if err?
 					candidateModel.cacheCandidateByType singerInfos,boardType if hasData
 					return cb singerInfos
+
+	verifySinger:(singerId,boardType,cb)->
+		candidateModel = new Candidate
+		candidateModel.verifySinger singerId,boardType,cb
 
 
 module.exports = CandidateHelper

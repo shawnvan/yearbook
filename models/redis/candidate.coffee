@@ -31,4 +31,10 @@ class Candidate
 		for singerId in singerIds
 			@redisClient.sadd @key,singerId
 
+	verifySinger:(singerId,boardType,cb)->
+		@__setKeys boardType
+		@redisClient.sismember singerId,(err,reply)->
+			return cb false if err?
+			cb reply
+
 module.exports = Candidate
