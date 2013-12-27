@@ -15,7 +15,7 @@ class Vote
 	#get voted times today 
 	getVoteTimes:(tuid,cb)->
 		@redisClient.hget @key,tuid,(err,reply)->
-			return cb 0 if err?
+			return cb 0 if err? or not reply
 			cb reply
 
 	addVoteTimes:(tuid,cb)->

@@ -5,7 +5,6 @@ class UserHelper
 		#get from redis first
 		userModel = new User
 		userModel.getUserInfoByToken access_token,(userInfo)->
-			console.log userInfo
 			return cb userInfo if userInfo?
 			#redis miss then get from api
 			#build query string
